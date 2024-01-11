@@ -24,7 +24,7 @@ h1 {
     margin-top: 20px;
     margin-left: 100px;
 
-    .logo__img {
+    &__img {
         height: 50px;
     }
 }
@@ -50,6 +50,7 @@ h1 {
         h2 {
             color: #D3573C;
             font-size: 2em;
+            text-align: center;
         }
 
         h3 {
@@ -72,8 +73,9 @@ h1 {
             height: 200px;
             border-radius: 100%;
             overflow: hidden;
+            margin: auto;
 
-            img {
+            &__img {
                 width: 200px;
                 height: 200px;
                 object-fit: cover;

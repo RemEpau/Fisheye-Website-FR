@@ -19,11 +19,12 @@ class photographerTemplate {
         // Elements à créer
         const article = document.createElement('article');
         const container = `
+            
+            <a href="#" tabindex="0">
             <div class="container">
-                <img src="assets/photographers/${this.portrait}" alt="Portrait de ${this.name}">
+                <img class="container__img" src="assets/photographers/${this.portrait}" alt="">
             </div>
-            <a href="#">
-                <h2>${this.name}</h2>
+                <h2>${this.name}</h2> 
             </a>
             <h3>${this.city}, ${this.country}</h3>
             <p class="tagline">${this.tagline}</p>

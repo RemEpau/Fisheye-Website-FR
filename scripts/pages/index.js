@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 async function getPhotographers() {
     // Récupérer les données des photographes en utilisant fetch depuis le fichier json
 
