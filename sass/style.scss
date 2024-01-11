@@ -1,0 +1,85 @@
+@import "_reset";
+@import "photographer";
+
+body {
+    font-family: "DM Sans", sans-serif;
+    margin: 0;
+}
+
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+}
+
+h1 {
+    color: #901C1C;
+    margin-right: 100px;
+}
+
+.logo {
+    margin-top: 20px;
+    margin-left: 100px;
+
+    .logo__img {
+        height: 50px;
+    }
+}
+
+
+.photographer_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 50px;
+
+    article {
+        justify-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        a {
+            margin-top: 2em;
+        }
+
+        h2 {
+            color: #D3573C;
+            font-size: 2em;
+        }
+
+        h3 {
+            color: #D3573C;
+            font-size: 1em;
+        }
+
+        .tagline {
+            color: #000;
+            font-size: 0.8em;
+        }
+
+        .price {
+            color: #505050;
+            font-size: 0.8em;
+        }
+
+        .container {
+            width: 200px;
+            height: 200px;
+            border-radius: 100%;
+            overflow: hidden;
+
+            img {
+                width: 200px;
+                height: 200px;
+                object-fit: cover;
+                transform: scale(1.25);
+            }
+
+        }
+    }
+}

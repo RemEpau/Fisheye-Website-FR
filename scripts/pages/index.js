@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 async function getPhotographers() {
     // Récupérer les données des photographes en utilisant fetch depuis le fichier json
 
@@ -16,7 +18,7 @@ async function displayData(photographers) {
 
     photographers.forEach((photographer) => {
         // console.log(photographer);
-        const photographerModel = photographerTemplate(photographer);
+        const photographerModel = new photographerTemplate(photographer);
         const userCardDOM = photographerModel.getUserCardDOM();
         photographersSection.appendChild(userCardDOM);
     });
@@ -29,4 +31,3 @@ async function init() {
 }
 
 init();
-

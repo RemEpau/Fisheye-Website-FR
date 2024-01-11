@@ -1,38 +1,41 @@
 /**
- * Génère un modèle de photographe basé sur les données fournies.
- *
- * @param {Object} data - L'objet de données contenant les informations du photographe.
- * @param {string} data.name - Le nom du photographe.
- * @param {string} data.portrait - Le chemin vers l'image du portrait du photographe.
- * @returns {Object} - Un objet contenant le nom du photographe, l'image et une fonction pour générer le DOM de la carte utilisateur.
+ * Créer une carte utilisateur à partir des données d'un utilisateur
+ * @param {Object} data Les données d'un utilisateur
+ * @returns {HTMLElement} Le DOM de la carte utilisateur
  */
-function photographerTemplate(data) {
-    const { name, portrait } = data;
-
-    const picture = portrait ? `assets/photographers/${portrait}` : 'assets/photographers/account.png'
-
-    function getUserCardDOM() {
-        // Elements à créer
-        const article = document.createElement('article');
-        const container = document.createElement('div');
-        const img = document.createElement('img');
-        const h2 = document.createElement('h2');
-
-        // Ajout des classes et attributs
-        container.classList.add('container');
-        img.setAttribute("src", picture)
-        img.setAttribute("alt", `Portrait de ${name}`)
-
-        // Ajout du contenu
-        h2.textContent = name;
-        article.appendChild(container);
-        container.appendChild(img);
-        article.appendChild(h2);
-
-        // Retourner le DOM
-        return (article);
+class photographerTemplate {
+    constructor(data) {
+        this.name = data.name;
+        this.id = data.id;
+        this.city = data.city;
+        this.country = data.country;
+        this.tagline = data.tagline;
+        this.price = data.price;
+        this.portrait = data.portrait;
     }
 
-    // Retourner la fonction getUserCardDOM et les données name et picture
-    return { name, picture, getUserCardDOM }
+    getUserCardDOM() {
+
+        // Elements à créer
+        const article = document.createElement('article');
+        const container = `
+            <div class="container">
+                <img src="assets/photographers/${this.portrait}" alt="Portrait de ${this.name}">
+            </div>
+            <a href="#">
+                <h2>${this.name}</h2>
+            </a>
+            <h3>${this.city}, ${this.country}</h3>
+            <p class="tagline">${this.tagline}</p>
+            <i class="price">${this.price}€/jour</i>
+        `;
+        article.innerHTML = container;
+
+        // Ajouter des attributs et des éléments sémantiques pour l'accessibilité
+        article.setAttribute('role', 'article');
+        article.setAttribute('aria-label', `${this.name}, ${this.city}, ${this.country}`);
+
+        // Retourner le DOM de la carte utilisateur
+        return article;
+    }
 }
