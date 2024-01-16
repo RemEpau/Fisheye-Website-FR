@@ -3,7 +3,7 @@
  * @param {Object} data Les données d'un utilisateur
  * @returns {HTMLElement} Le DOM de la carte utilisateur
  */
-class photographerTemplate {
+class Photographer {
     constructor(data) {
         this.name = data.name;
         this.id = data.id;
@@ -19,7 +19,6 @@ class photographerTemplate {
         // Elements à créer
         const article = document.createElement('article');
         const container = `
-            
             <a href="#" tabindex="0">
             <div class="container">
                 <img class="container__img" src="assets/photographers/${this.portrait}" alt="">
@@ -29,7 +28,7 @@ class photographerTemplate {
             <h3>${this.city}, ${this.country}</h3>
             <p class="tagline">${this.tagline}</p>
             <i class="price">${this.price}€/jour</i>
-        `;
+    `;
         article.innerHTML = container;
 
         // Ajouter des attributs et des éléments sémantiques pour l'accessibilité
@@ -40,3 +39,5 @@ class photographerTemplate {
         return article;
     }
 }
+
+export { Photographer };

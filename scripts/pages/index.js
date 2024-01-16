@@ -1,3 +1,5 @@
+import { Photographer } from "../models/Photographer.js";
+
 async function getPhotographers() {
     // Récupérer les données des photographes en utilisant fetch depuis le fichier json
 
@@ -16,7 +18,7 @@ async function displayData(photographers) {
 
     photographers.forEach((photographer) => {
         // console.log(photographer);
-        const photographerModel = new photographerTemplate(photographer);
+        const photographerModel = new Photographer(photographer);
         const userCardDOM = photographerModel.getUserCardDOM();
         photographersSection.appendChild(userCardDOM);
     });
