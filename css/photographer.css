@@ -1,72 +1,149 @@
-#contact_modal {
+#contact_modal,
+#lightbox_modal {
   display: none;
 }
 
 .photograph-header {
-  background-color: #FAFAFA;
-  height: 300px;
+  background-color: #fafafa;
   margin: 0 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+}
+.photograph-header .container {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 100em;
+}
+.photograph-header .container__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .contact_button {
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 700;
   color: white;
   padding: 11px;
   width: 170px;
   height: 70px;
   border: none;
-  background-color: #901C1C;
+  background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+}
+.contact_button:hover {
+  background-color: #db8876;
+  color: black;
+}
+
+.filter {
+  margin: 0 100px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2em 0;
+}
+.filter label {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  min-width: 160px;
+}
+.dropdown select {
+  width: 160px;
+  height: 60px;
+  border-radius: 5px;
+  background-color: #901c1c;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 20px;
+  margin: 0 100px;
+  padding-bottom: 40px;
+}
+.gallery article {
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.gallery article:hover {
+  transform: scale(1.05);
+}
+.gallery article figure img,
+.gallery article figure video {
+  border-radius: 5px;
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+.gallery article figcaption {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px;
+  border-radius: 0 0 5px 5px;
+  color: #901c1c;
+  max-width: 400px;
+}
+.gallery article figcaption h4 {
+  font-size: 24px;
+  font-weight: 400;
+  max-width: 75%;
+  text-overflow: ellipsis;
+}
+.gallery article figcaption span {
+  font-size: 24px;
+  font-weight: 500;
+  margin-left: 0.3em;
 }
 
 .modal {
-  border-radius: 5px;
-  background-color: #DB8876;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 35px;
-  margin: auto;
-}
-.modal header {
-  justify-content: space-between;
-  width: 100%;
-}
-.modal header img {
-  cursor: pointer;
-}
-.modal header h2 {
-  font-size: 64px;
-  font-weight: normal;
-  text-align: center;
-}
-
-form {
   display: flex;
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
 }
-form label {
-  color: #312E2E;
-  font-size: 36px;
+.modal label {
+  color: #312e2e;
+  font-size: 24px;
 }
-form div {
+.modal div {
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: self-start;
   margin-bottom: 26px;
 }
-form input {
+.modal input,
+.modal textarea {
   width: 100%;
-  height: 68px;
   border: none;
   border-radius: 5px;
+  font-size: 36px;
+}
+.modal input {
+  height: 50px;
+}
+.modal textarea {
+  height: 89px;
 }
 
 /*# sourceMappingURL=photographer.css.map */

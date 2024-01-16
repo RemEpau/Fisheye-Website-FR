@@ -1,37 +1,78 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fisheye - photographe</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <script src="scripts/pages/photographer.js" type="module" defer></script>
+</head>
+
+<body>
+  <header>
+    <a href="index.html" class="logo" title="Fisheye Home page" tabindex="1">
+      <img src="assets/images/logo.png" class="logo__img" alt="fisheye logo" />
+    </a>
+  </header>
+  <main id="main">
+    <div class="photograph-header">
+      <div class="photograph-info"></div>
+      <button class="contact_button" alt="Contact Me" tabindex="2">
+        Contactez-moi
+      </button>
+    </div>
+    <div class="photograph-gallery">
+      <form class="filter">
+        <label for="sort">Trier par :</label>
+        <div class="dropdown" role="listbox" aria-haspopup="listbox" aria-expanded="false">
+          <select id="sort" name="sort" class="dropbtn" alt="Order by" tabindex="10" id="submitContactModalFormBtn">
+            <option id="opt-popularity" value="popularity">Popularité</option>
+            <option id="opt-date" value="date">Date</option>
+            <option id="opt-title" value="title">Titre</option>
+          </select>
+        </div>
+      </form>
+      <div class="gallery"></div>
+      <div class="gallery-bottom-bar">
+        <span id="totalLikes"></span>
+        <span id="price"></span>
       </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+    </div>
+  </main>
+  <div id="contact_modal">
+    <div class="modal" aria-hidden="true" role="dialog" aria-describedby="modalTitle" tabindex="-1">
+      <header>
+        <h2 id="modalTitle">Contactez-moi</h2>
+        <img class="contact_close" tabindex="3" alt="Icone de fermeture de la modal de contact"
+          src="assets/icons/close.svg" />
+      </header>
+      <form>
+        <div>
+          <label for="prenom">Prénom</label>
+          <input tabindex="4" type="text" name="prenom" id="prenom" autocomplete="given-name" />
+          <label for="nom">Nom</label>
+          <input tabindex="5" type="text" name="nom" id="nom" autocomplete="family-name" />
+          <label for="email">Email</label>
+          <input tabindex="6" type="email" name="email" id="email" autocomplete="email" />
+          <label for="message">Message</label>
+          <textarea tabindex="7" name="message" id="message" rows="5" autocomplete="off"></textarea>
+        </div>
+        <button tabindex="8" class="contact_button">Envoyer</button>
+      </form>
+    </div>
+  </div>
+  <div id="lightbox_modal">
+    <div class="lightbox" aria-hidden="true" role="dialog" aria-describedby="lightboxTitle">
+      <header>
+        <img alt="Icone de fermeture de la lightbox" src="assets/icons/close.svg" onclick="closeLightbox()" />
+      </header>
+      <div id="lightboxContent"></div>
+    </div>
+  </div>
+</body>
+
 </html>

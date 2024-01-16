@@ -1,15 +1,15 @@
-import { VideoMedia } from "../models/VideoMedia";
-import { ImageMedia } from "../models/ImageMedia";
+import { Video } from "../models/Video.js";
+import { Image } from "../models/Image.js";
 
 
-class MediaFactory {
-    constructor(photographerDataMediaById, photographerDataById, titleTranslations) {
-        if (photographerDataMediaById.image) {
-            return new ImageMedia(photographerDataMediaById, photographerDataById, titleTranslations);
-        } else if (photographerDataMediaById.video) {
-            return new VideoMedia(photographerDataMediaById, photographerDataById, titleTranslations);
+export class MediaFactory {
+    createMedia(data) {
+        if (data.image) {
+            return new Image(data);
+        } else if (data.video) {
+            return new Video(data);
+        } else {
+            throw new Error("Le type de média n'est pas reconnu");
         }
     }
 }
-
-export { MediaFactory };
