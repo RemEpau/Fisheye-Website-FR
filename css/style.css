@@ -186,6 +186,10 @@ i {
 .gallery article:hover {
   transform: scale(1.05);
 }
+.gallery article figure a {
+  width: 400px;
+  height: 400px;
+}
 .gallery article figure img,
 .gallery article figure video {
   border-radius: 5px;

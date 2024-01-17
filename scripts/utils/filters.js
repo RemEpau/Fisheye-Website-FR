@@ -1,14 +1,11 @@
-export function sortByDate(mediaData, displayPhotographerGallery) {
-    const sortedByDate = mediaData.sort((a, b) => { new Date(a.date) - new Date(b.date); });
-    displayPhotographerGallery(currentPhotographer, sortedByDate);
+export function sortByDate(mediaArray) {
+    return [...mediaArray].sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
-export function sortByTitle(mediaData, displayPhotographerGallery) {
-    const sortedByTitle = mediaData.sort((a, b) => { a.title.localeCompare(b.title); });
-    displayPhotographerGallery(currentPhotographer, sortedByTitle);
+export function sortByTitle(mediaArray) {
+    return [...mediaArray].sort((a, b) => a.title.localeCompare(b.title));
 }
 
-export function sortByPopularity(mediaData, displayPhotographerGallery) {
-    const sortedByPopularity = mediaData.sort((a, b) => { b.likes - a.likes; });
-    displayPhotographerGallery(currentPhotographer, sortedByPopularity);
+export function sortByPopularity(mediaArray) {
+    return [...mediaArray].sort((a, b) => b.likes - a.likes);
 }

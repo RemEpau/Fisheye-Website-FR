@@ -1,5 +1,6 @@
 import { sortByPopularity, sortByDate, sortByTitle } from "../utils/filters.js";
 import { MediaFactory } from "../factories/MediaFactory.js";
+import { currentPhotographer } from "../pages/photographer.js";
 
 export class photographerTemplate {
     constructor(data, tabIndexCounter) {
@@ -53,122 +54,114 @@ export class photographerTemplate {
     }
 
     displayFilters(photographerMedia) {
-        const select = document.querySelector("#sort");
+        const select = document.getElementById("sort");
         const filterSelect = Array.from(select.options);
-        const defaultOption = filterSelect.find(option => option.value === "popularity");
-
-        const btnPopularity = document.getElementById("opt-popularity");
-        const btnDate = document.getElementById("opt-date");
-        const btnTitle = document.getElementById("opt-title");
+        console.log("Filtres : ", filterSelect);
 
         select.addEventListener("change", function () {
             switch (this.value) {
                 case "popularity":
-                    sortByPopularity(photographerMedia);
+                    displayPhotographerGallery(currentPhotographer, sortByPopularity(photographerMedia));
+                    console.log("Likes : ", sortByPopularity(photographerMedia));
                     break;
                 case "date":
-                    sortByDate(photographerMedia);
+                    displayPhotographerGallery(currentPhotographer, sortByDate(photographerMedia));
+                    console.log("Date : ", sortByDate(photographerMedia));
                     break;
                 case "title":
-                    sortByTitle(photographerMedia);
+                    displayPhotographerGallery(currentPhotographer, sortByTitle(photographerMedia));
+                    console.log("Title : ", sortByTitle(photographerMedia));
                     break;
             }
         });
-
-        // function updateTabIndex(activeButton) {
-        //     filterSelect.forEach(element => {
-        //         const tabIndex = button === activeButton ? 10 : 10;
-        //         button.setAttribute("tabindex", tabIndex);
-        //     });
-        // }
     }
+}
 
-    displayPhotographerGallery(photographer, photographerMedia) {
-        const gallery = document.querySelector(".gallery");
-        const mediaFactory = new MediaFactory();
-        let tabindexCount = 11;
+export function displayPhotographerGallery(photographer, photographerMedia) {
+    const gallery = document.querySelector(".gallery");
+    const mediaFactory = new MediaFactory();
+    let tabindexCount = 11;
 
-        if (gallery && photographer) {
-            let totalLikes = 0;
-            const photographerId = photographer.id;
+    if (gallery && photographer) {
+        let totalLikes = 0;
+        const photographerId = photographer.id;
 
-            const photographerMediaFiltered = photographerMedia.filter(
-                (mediaData) => mediaData.photographerId === photographerId
-            );
+        const photographerMediaFiltered = photographerMedia.filter(
+            (mediaData) => mediaData.photographerId === photographerId
+        );
 
-            gallery.innerHTML = "";
+        gallery.innerHTML = "";
 
-            photographerMediaFiltered.forEach((mediaData) => {
-                const media = mediaFactory.createMedia({
-                    ...mediaData,
-                    photographer: photographer.name,
-                });
-
-                const mediaElement = document.createElement(
-                    media.type === "image" ? "img" : "video"
-                );
-                const mediaLink = document.createElement("a");
-                const card = document.createElement("article");
-                const figure = document.createElement("figure");
-                const figcaption = document.createElement("figcaption");
-                const titleElement = document.createElement("h4");
-                const likesContainer = document.createElement("span");
-                const heartIcon = document.createElement("i");
-
-                // Image
-                mediaElement.src = media.src;
-                mediaElement.alt = media.title;
-
-                // Link container
-                mediaLink.classList.add("media-container");
-                mediaLink.setAttribute("title", "Lilac breasted roller, closeup view");
-                mediaLink.appendChild(mediaElement);
-                mediaLink.setAttribute("tabindex", tabindexCount);
-                tabindexCount++;
-
-                // Likes container
-                likesContainer.setAttribute("tabindex", tabindexCount);
-                tabindexCount++;
-
-                heartIcon.className = "fas fa-heart";
-                heartIcon.setAttribute("aria-label", "likes");
-                likesContainer.appendChild(heartIcon);
-
-                const likesNumber = document.createElement("span");
-                likesNumber.textContent = media.likes;
-                likesContainer.appendChild(likesNumber);
-
-                titleElement.textContent = media.title;
-
-                mediaLink.setAttribute("role", "button");
-                mediaLink.setAttribute("href", "#/");
-                mediaLink.setAttribute("data-media", media.id);
-
-                likesContainer.addEventListener("click", function () {
-                    const currentLikes = parseInt(likesNumber.textContent, 10);
-                    const isLiked = heartIcon.classList.contains("liked");
-
-                    if (isLiked) {
-                        likesNumber.textContent = currentLikes - 1;
-                        heartIcon.classList.remove("liked");
-                    } else {
-                        likesNumber.textContent = currentLikes + 1;
-                        heartIcon.classList.add("liked");
-                    }
-
-                    totalLikes = isLiked ? totalLikes - 1 : totalLikes + 1;
-                });
-
-                // Add elements to DOM
-                figcaption.appendChild(titleElement);
-                figcaption.appendChild(likesContainer);
-                figure.appendChild(mediaLink);
-                figure.appendChild(figcaption);
-                card.appendChild(figure);
-
-                totalLikes += media.likes;
-                gallery.appendChild(card);
+        photographerMediaFiltered.forEach((mediaData) => {
+            const media = mediaFactory.createMedia({
+                ...mediaData,
+                photographer: photographer.name,
             });
-        }
+
+            const mediaElement = document.createElement(
+                media.type === "image" ? "img" : "video"
+            );
+            const mediaLink = document.createElement("a");
+            const card = document.createElement("article");
+            const figure = document.createElement("figure");
+            const figcaption = document.createElement("figcaption");
+            const titleElement = document.createElement("h4");
+            const likesContainer = document.createElement("span");
+            const heartIcon = document.createElement("i");
+
+            // Image
+            mediaElement.src = media.src;
+            mediaElement.alt = media.title;
+
+            // Link container
+            mediaLink.classList.add("media-container");
+            mediaLink.setAttribute("title", "Lilac breasted roller, closeup view");
+            mediaLink.appendChild(mediaElement);
+            mediaLink.setAttribute("tabindex", tabindexCount);
+            tabindexCount++;
+
+            // Likes container
+            likesContainer.setAttribute("tabindex", tabindexCount);
+            tabindexCount++;
+
+            heartIcon.className = "fas fa-heart";
+            heartIcon.setAttribute("aria-label", "likes");
+            likesContainer.appendChild(heartIcon);
+
+            const likesNumber = document.createElement("span");
+            likesNumber.textContent = media.likes;
+            likesContainer.appendChild(likesNumber);
+
+            titleElement.textContent = media.title;
+
+            mediaLink.setAttribute("role", "button");
+            mediaLink.setAttribute("href", "#/");
+            mediaLink.setAttribute("data-media", media.id);
+
+            likesContainer.addEventListener("click", function () {
+                const currentLikes = parseInt(likesNumber.textContent, 10);
+                const isLiked = heartIcon.classList.contains("liked");
+
+                if (isLiked) {
+                    likesNumber.textContent = currentLikes - 1;
+                    heartIcon.classList.remove("liked");
+                } else {
+                    likesNumber.textContent = currentLikes + 1;
+                    heartIcon.classList.add("liked");
+                }
+
+                totalLikes = isLiked ? totalLikes - 1 : totalLikes + 1;
+            });
+
+            // Add elements to DOM
+            figcaption.appendChild(titleElement);
+            figcaption.appendChild(likesContainer);
+            figure.appendChild(mediaLink);
+            figure.appendChild(figcaption);
+            card.appendChild(figure);
+
+            totalLikes += media.likes;
+            gallery.appendChild(card);
+        });
     }
 }

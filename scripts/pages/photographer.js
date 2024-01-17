@@ -1,8 +1,8 @@
 import { PhotographerApi } from "../api/Api.js";
 import { displayModal, closeModal } from "../utils/contactForm.js";
-import { photographerTemplate } from "../templates/photographerTemplate.js";
+import { photographerTemplate, displayPhotographerGallery } from "../templates/photographerTemplate.js";
 
-let currentPhotographer = null; // Variable globale pour stocker le photographe courant
+export let currentPhotographer = null; // Variable globale pour stocker le photographe courant
 
 async function getPhotographerById(id) {
     const photographers = await new PhotographerApi("/data/photographers.json").getPhotographersApi();
@@ -26,7 +26,7 @@ async function displayData(data) {
     photographersSection.appendChild(userCardDOM);
     photographModel.displayFilters(data.photographerMedia);
     console.log(data.photographerMedia);
-    photographModel.displayPhotographerGallery(
+    displayPhotographerGallery(
         data.currentPhotographer,
         data.photographerMedia
     );
