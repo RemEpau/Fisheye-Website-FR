@@ -3,12 +3,35 @@
     display: none;
 }
 
+.photograph-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__name {
+        color: #D3573C;
+        font-weight: 400;
+        font-size: 3em;
+    }
+
+    &__address {
+        color: #901C1C;
+        font-weight: 400;
+        font-size: 1.75em;
+    }
+
+    &__tagline {
+        color: #525252;
+        font-weight: 400;
+        font-size: 1.1em;
+    }
+}
+
 .photograph-header {
     background-color: #fafafa;
     margin: 0 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     padding: 40px;
 
     .container {
@@ -16,6 +39,8 @@
         height: 200px;
         overflow: hidden;
         border-radius: 100em;
+        justify-self: flex-end;
+        align-self: center;
 
         &__img {
             width: 100%;
@@ -37,6 +62,8 @@
     background-color: #901c1c;
     border-radius: 5px;
     cursor: pointer;
+    justify-self: center;
+    align-self: center;
 
     &:hover {
         background-color: #db8876;
@@ -132,7 +159,6 @@
 
 .modal {
     display: flex;
-    width: 100%;
     flex-direction: column;
     align-items: flex-start;
 

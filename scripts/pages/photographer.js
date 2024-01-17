@@ -22,6 +22,7 @@ async function displayData(data) {
     console.log(photographModel);
 
     const userCardDOM = photographModel.getCurrentUserCardDOM();
+    photographModel.getCurrentUserInfoDOM();
     photographersSection.appendChild(userCardDOM);
     photographModel.displayFilters(data.photographerMedia);
     console.log(data.photographerMedia);

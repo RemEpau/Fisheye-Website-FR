@@ -42,6 +42,16 @@ export class photographerTemplate {
         return photographerHeader;
     }
 
+    getCurrentUserInfoDOM() {
+        const photographerTitle = `
+        <h1 class="photograph-info__name">${this._name}</h1>
+        <h2 class="photograph-info__address">${this._city}, ${this._country}</h2>
+        <p class="photograph-info__tagline">${this._tagline}</p>
+        `;
+        const photographerInfo = document.querySelector('.photograph-info');
+        photographerInfo.innerHTML = photographerTitle;
+    }
+
     displayFilters(photographerMedia) {
         const select = document.querySelector("#sort");
         const filterSelect = Array.from(select.options);
