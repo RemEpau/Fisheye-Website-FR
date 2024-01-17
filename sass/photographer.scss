@@ -9,6 +9,7 @@
     justify-content: center;
 
     &__name {
+        margin: 0;
         color: #D3573C;
         font-weight: 400;
         font-size: 3em;
@@ -24,6 +25,24 @@
         color: #525252;
         font-weight: 400;
         font-size: 1.1em;
+        margin-top: 0.5em;
+    }
+
+    @media (max-width: 950px) {
+        align-items: center;
+
+        &__name {
+            margin: 0;
+            text-align: center;
+        }
+
+        &__address {
+            text-align: center;
+        }
+
+        &__tagline {
+            text-align: center;
+        }
     }
 }
 
@@ -47,6 +66,19 @@
             height: 100%;
             object-fit: cover;
 
+        }
+    }
+
+    @media (max-width: 950px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 20px;
+        justify-items: center;
+
+        .container {
+            grid-row: 1 / 3;
+            grid-column: 1 / 2;
+            justify-self: center;
         }
     }
 }
