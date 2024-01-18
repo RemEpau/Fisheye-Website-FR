@@ -54,10 +54,10 @@ export class photographerTemplate {
     }
 
     displayFilters(photographerMedia) {
+        // On récupère le select "sort"
         const select = document.getElementById("sort");
-        const filterSelect = Array.from(select.options);
-        console.log("Filtres : ", filterSelect);
 
+        // On ajoute un event listener sur le select afin de filtrer en fonction de la valeur
         select.addEventListener("change", function () {
             switch (this.value) {
                 case "popularity":
@@ -115,7 +115,7 @@ export function displayPhotographerGallery(photographer, photographerMedia) {
 
             // Link container
             mediaLink.classList.add("media-container");
-            mediaLink.setAttribute("title", "Lilac breasted roller, closeup view");
+            mediaLink.setAttribute("title", media.title);
             mediaLink.appendChild(mediaElement);
             mediaLink.setAttribute("tabindex", tabindexCount);
             tabindexCount++;
@@ -137,6 +137,7 @@ export function displayPhotographerGallery(photographer, photographerMedia) {
             mediaLink.setAttribute("role", "button");
             mediaLink.setAttribute("href", "#/");
             mediaLink.setAttribute("data-media", media.id);
+            //TODO : Afficher le lightbox quand on clique sur l'image!
 
             likesContainer.addEventListener("click", function () {
                 const currentLikes = parseInt(likesNumber.textContent, 10);

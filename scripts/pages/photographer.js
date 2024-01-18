@@ -20,12 +20,13 @@ async function displayData(data) {
     const photographModel = new photographerTemplate(data.currentPhotographer);
 
     console.log(photographModel);
-
+    // On récupère le DOM de la photo et des infos du photographe
     const userCardDOM = photographModel.getCurrentUserCardDOM();
     photographModel.getCurrentUserInfoDOM();
     photographersSection.appendChild(userCardDOM);
+    // On récupère les éléments filtrés du photographe
     photographModel.displayFilters(data.photographerMedia);
-    console.log(data.photographerMedia);
+    // On affiche la gallery du photographe
     displayPhotographerGallery(
         data.currentPhotographer,
         data.photographerMedia
