@@ -3,7 +3,7 @@ import { Image } from "../models/Image.js";
 
 
 export class MediaFactory {
-    createMedia(data) {
+    constructor(data) {
         if (data.image) {
             return new Image(data);
         } else if (data.video) {

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fisheye - photographe</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <script src="https://kit.fontawesome.com/c9f8ad8d51.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <script src="scripts/pages/photographer.js" type="module" defer></script>
@@ -47,28 +47,29 @@
     <div class="modal" aria-hidden="true" role="dialog" aria-describedby="modalTitle" tabindex="-1">
       <header>
         <h2 id="modalTitle">Contactez-moi</h2>
-        <img class="contact_close" tabindex="3" alt="Icone de fermeture de la modal de contact"
-          src="assets/icons/close.svg" />
+        <button class="contact_close modal-element fa-solid fa-xmark" tabindex="3" aria-label="Close" title="Close"
+          aria-describedby="modalTitle"></button>
       </header>
-      <form>
+      <form id="contact_form">
         <div>
           <label for="prenom">Prénom</label>
-          <input tabindex="4" type="text" name="prenom" id="prenom" autocomplete="given-name" />
+          <input tabindex="4" type="text" name="prenom" id="prenom" autocomplete="given-name" class="modal-element" />
           <label for="nom">Nom</label>
-          <input tabindex="5" type="text" name="nom" id="nom" autocomplete="family-name" />
+          <input tabindex="5" type="text" name="nom" id="nom" autocomplete="family-name" class="modal-element" />
           <label for="email">Email</label>
-          <input tabindex="6" type="email" name="email" id="email" autocomplete="email" />
-          <label for="message">Message</label>
-          <textarea tabindex="7" name="message" id="message" rows="5" autocomplete="off"></textarea>
+          <input tabindex="6" type="email" name="email" id="email" autocomplete="email" class="modal-element" />
+          <label for="message">Votre message</label>
+          <textarea tabindex="7" name="message" id="message" rows="5" autocomplete="off"
+            class="modal-element"></textarea>
         </div>
-        <button tabindex="8" class="contact_button">Envoyer</button>
+        <button tabindex="8" class="contact_button modal-element">Envoyer</button>
       </form>
     </div>
   </div>
   <div id="lightbox_modal">
     <div class="lightbox" aria-hidden="true" role="dialog" aria-describedby="lightboxTitle">
       <header>
-        <img alt="Icone de fermeture de la lightbox" src="assets/icons/close.svg" onclick="closeLightbox()" />
+        <button alt="Icone de fermeture de la lightbox" class="lightbox_close fa-solid fa-xmark modal-element" />
       </header>
       <div id="lightboxContent"></div>
     </div>

@@ -1,6 +1,9 @@
 import { PhotographerApi } from "../api/Api.js";
+import { Photographer } from "../models/Photographer.js";
 import { displayModal, closeModal } from "../utils/contactForm.js";
-import { photographerTemplate, displayPhotographerGallery } from "../templates/photographerTemplate.js";
+import { PhotographerTemplate } from "../templates/photographerTemplate.js";
+import { displayPhotographerGallery } from "../utils/displayPhotographerGallery.js";
+import { closeLightbox } from "../utils/lightbox.js";
 
 export let currentPhotographer = null; // Variable globale pour stocker le photographe courant
 
@@ -13,34 +16,38 @@ async function getPhotographerById(id) {
     return { currentPhotographer, photographerMedia, media };
 }
 
-async function displayData(data) {
-    console.log(data);
-
+async function displayData(currentPhotographer, photographerMedia) {
     const photographersSection = document.querySelector('.photograph-header');
-    const photographModel = new photographerTemplate(data.currentPhotographer);
+    const photographerData = new Photographer(currentPhotographer);
+    const photographModel = new PhotographerTemplate(photographerData);
 
-    console.log(photographModel);
     // On récupère le DOM de la photo et des infos du photographe
     const userCardDOM = photographModel.getCurrentUserCardDOM();
     photographModel.getCurrentUserInfoDOM();
     photographersSection.appendChild(userCardDOM);
+
     // On récupère les éléments filtrés du photographe
-    photographModel.displayFilters(data.photographerMedia);
+    photographModel.displayFilters(photographerMedia);
+
     // On affiche la gallery du photographe
     displayPhotographerGallery(
-        data.currentPhotographer,
-        data.photographerMedia
+        currentPhotographer,
+        photographerMedia
     );
+
+    // On affiche le nom du photographe dans le modal
+    document.querySelector('#modalTitle').innerHTML += `</br> ${photographerData._name}`
 }
 
 async function init() {
     const urlParams = new URLSearchParams(window.location.search);
     const photographerId = parseInt(urlParams.get('id'));
     const { currentPhotographer, photographerMedia } = await getPhotographerById(photographerId);
-    displayData({ currentPhotographer, photographerMedia });
+    displayData(currentPhotographer, photographerMedia);
 
     document.querySelector('.contact_button').addEventListener('click', displayModal);
     document.querySelector('.contact_close').addEventListener('click', closeModal);
+    document.querySelector('.lightbox_close').addEventListener('click', closeLightbox);
 }
 
 init();
