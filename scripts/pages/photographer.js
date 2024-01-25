@@ -8,7 +8,7 @@ import { closeLightbox } from "../utils/lightbox.js";
 let currentPhotographer = null; // Variable globale pour stocker le photographe courant
 
 
-export function serCurrentPhotographer(photographer) {
+export function setCurrentPhotographer(photographer) {
     currentPhotographer = photographer;
 }
 
