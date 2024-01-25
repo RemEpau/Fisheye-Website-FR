@@ -4,6 +4,7 @@ import { displayModal, closeModal } from "../utils/contactForm.js";
 import { PhotographerTemplate } from "../templates/PhotographerTemplate.js";
 import { displayPhotographerGallery } from "../utils/displayPhotographerGallery.js";
 import { closeLightbox } from "../utils/lightbox.js";
+import { sortByPopularity, sortByDate, sortByTitle } from "../utils/filters.js";
 
 let currentPhotographer = null; // Variable globale pour stocker le photographe courant
 
@@ -16,13 +17,35 @@ export function getCurrentPhotographer() {
     return currentPhotographer;
 }
 
+export function displayFilters(photographerMedia) {
+    // On récupère le select "sort"
+    const select = document.getElementById("sort");
+
+    // On ajoute un event listener sur le select afin de filtrer en fonction de la valeur
+    select.addEventListener("change", function () {
+        switch (this.value) {
+            case "popularity":
+                displayPhotographerGallery(getCurrentPhotographer(), sortByPopularity(photographerMedia));
+                break;
+            case "date":
+                displayPhotographerGallery(getCurrentPhotographer(), sortByDate(photographerMedia));
+                break;
+            case "title":
+                displayPhotographerGallery(getCurrentPhotographer(), sortByTitle(photographerMedia));
+                break;
+        }
+    });
+    displayPhotographerGallery(getCurrentPhotographer(), sortByPopularity(photographerMedia));
+}
+
+async function getPhotographerMediaById(id) {
+    const media = await new PhotographerApi("/data/photographers.json").getMediasApi();
+    return media.filter((media) => media.photographerId == id);
+}
+
 async function getPhotographerById(id) {
     const photographers = await new PhotographerApi("/data/photographers.json").getPhotographersApi();
-    const media = await new PhotographerApi("/data/photographers.json").getMediasApi();
-
-    currentPhotographer = photographers.find((photographer) => photographer.id == id);
-    const photographerMedia = media.filter((media) => media.photographerId == id);
-    return { currentPhotographer, photographerMedia, media };
+    return photographers.find((photographer) => photographer.id == id);
 }
 
 async function displayData(currentPhotographer, photographerMedia) {
@@ -40,7 +63,7 @@ async function displayData(currentPhotographer, photographerMedia) {
     photographersInfo.appendChild(userInfoDOM);
 
     // On récupère les éléments filtrés du photographe
-    photographModel.displayFilters(photographerMedia);
+    displayFilters(photographerMedia);
 
     // On affiche la gallery du photographe
     displayPhotographerGallery(
@@ -54,14 +77,17 @@ async function displayData(currentPhotographer, photographerMedia) {
 
 async function init() {
     const urlParams = new URLSearchParams(window.location.search);
-
     const photographerId = parseInt(urlParams.get('id'));
-    const { currentPhotographer, photographerMedia } = await getPhotographerById(photographerId);
-    displayData(currentPhotographer, photographerMedia);
+
+    const photographerMedia = await getPhotographerMediaById(photographerId);
+    setCurrentPhotographer(await getPhotographerById(photographerId));
+    displayData(getCurrentPhotographer(), photographerMedia);
 
     document.querySelector('.contact_button').addEventListener('click', displayModal);
     document.querySelector('.contact_close').addEventListener('click', closeModal);
     document.querySelector('.lightbox_close').addEventListener('click', closeLightbox);
+
+    document.title = "FishEye | " + getCurrentPhotographer().name;
 }
 
 init();

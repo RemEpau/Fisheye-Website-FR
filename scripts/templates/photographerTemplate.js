@@ -1,6 +1,4 @@
-import { sortByPopularity, sortByDate, sortByTitle } from "../utils/filters.js";
-import { getCurrentPhotographer } from "../pages/photographer.js";
-import { displayPhotographerGallery } from '../utils/displayPhotographerGallery.js';
+
 
 export class PhotographerTemplate {
     constructor(photographer, tabIndexCounter) {
@@ -40,26 +38,5 @@ export class PhotographerTemplate {
             <p class="photograph-info__tagline">${this._photographer._tagline}</p>
         </div>
         `, "text/html").body.firstChild;
-    }
-
-    displayFilters(photographerMedia) {
-        // On récupère le select "sort"
-        const select = document.getElementById("sort");
-
-        // On ajoute un event listener sur le select afin de filtrer en fonction de la valeur
-        select.addEventListener("change", function () {
-            switch (this.value) {
-                case "popularity":
-                    displayPhotographerGallery(getCurrentPhotographer, sortByPopularity(photographerMedia));
-                    break;
-                case "date":
-                    displayPhotographerGallery(getCurrentPhotographer, sortByDate(photographerMedia));
-                    break;
-                case "title":
-                    displayPhotographerGallery(getCurrentPhotographer, sortByTitle(photographerMedia));
-                    break;
-            }
-        });
-        displayPhotographerGallery(getCurrentPhotographer, sortByPopularity(photographerMedia));
     }
 }

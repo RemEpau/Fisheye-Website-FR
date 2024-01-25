@@ -67,7 +67,6 @@ export function displayPhotographerGallery(photographer, photographerMedia) {
             const mediaLink = mediaContainer.querySelector(".media-container");
             mediaLink.addEventListener("click", function (e) {
                 e.preventDefault();
-                console.log("Media Link : ", mediaLink);
                 displayLightbox(media, photographerMediaFiltered);
             });
 
