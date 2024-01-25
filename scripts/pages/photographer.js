@@ -1,7 +1,7 @@
 import { PhotographerApi } from "../api/Api.js";
 import { Photographer } from "../models/Photographer.js";
 import { displayModal, closeModal } from "../utils/contactForm.js";
-import { PhotographerTemplate } from "../templates/photographerTemplate.js";
+import { PhotographerTemplate } from "../templates/PhotographerTemplate.js";
 import { displayPhotographerGallery } from "../utils/displayPhotographerGallery.js";
 import { closeLightbox } from "../utils/lightbox.js";
 
@@ -18,13 +18,17 @@ async function getPhotographerById(id) {
 
 async function displayData(currentPhotographer, photographerMedia) {
     const photographersSection = document.querySelector('.photograph-header');
+    const photographersInfo = document.querySelector('.photograph-info');
+
     const photographerData = new Photographer(currentPhotographer);
     const photographModel = new PhotographerTemplate(photographerData);
 
     // On récupère le DOM de la photo et des infos du photographe
-    const userCardDOM = photographModel.getCurrentUserCardDOM();
-    photographModel.getCurrentUserInfoDOM();
+    const userCardDOM = photographModel.getCurrentUserImgDOM();
+    const userInfoDOM = photographModel.getCurrentUserInfoDOM();
+    console.log(userInfoDOM);
     photographersSection.appendChild(userCardDOM);
+    photographersInfo.appendChild(userInfoDOM);
 
     // On récupère les éléments filtrés du photographe
     photographModel.displayFilters(photographerMedia);

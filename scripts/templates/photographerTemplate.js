@@ -24,7 +24,7 @@ export class PhotographerTemplate {
             `, "text/html").body.firstChild;
     }
 
-    getCurrentUserCardDOM() {
+    getCurrentUserImgDOM() {
         return new DOMParser().parseFromString(`
             <div class="container">
                 <img class="container__img" src="assets/photographers/${this._photographer._portrait}" alt="${this._photographer._name}" tabindex="${this._photographer._tabIndexCounter}">
@@ -33,13 +33,13 @@ export class PhotographerTemplate {
     }
 
     getCurrentUserInfoDOM() {
-        const photographerTitle = `
-        <h1 class="photograph-info__name">${this._photographer._name}</h1>
-        <h2 class="photograph-info__address">${this._photographer._city}, ${this._photographer._country}</h2>
-        <p class="photograph-info__tagline">${this._photographer._tagline}</p>
-        `;
-        const photographerInfo = document.querySelector('.photograph-info');
-        photographerInfo.innerHTML = photographerTitle;
+        return new DOMParser().parseFromString(`
+        <div>
+            <h1 class="photograph-info__name">${this._photographer._name}</h1>
+            <h2 class="photograph-info__address">${this._photographer._city}, ${this._photographer._country}</h2>
+            <p class="photograph-info__tagline">${this._photographer._tagline}</p>
+        </div>
+        `, "text/html").body.firstChild;
     }
 
     displayFilters(photographerMedia) {

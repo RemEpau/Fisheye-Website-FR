@@ -40,32 +40,32 @@ export function displayLightbox(currentMedia, allMedia) {
         lightboxContent.removeChild(lightboxContent.firstChild);
     }
 
-    let lightboxMediaElement;
-    let lightboxTitleElement;
+    let lightboxMedia;
+    let lightboxTitle;
 
     console.log("Current Media : ", currentMedia.type);
 
     if (currentMedia.type === "image") {
-        lightboxMediaElement = new DOMParser().parseFromString(`
+        lightboxMedia = new DOMParser().parseFromString(`
             <img src="${currentMedia.src}" alt="Image en plein écran" class="lightbox-media modal-element" />
         `, "text/html").body.firstChild;
     } else if (currentMedia.type === "video") {
-        lightboxMediaElement = new DOMParser().parseFromString(`
+        lightboxMedia = new DOMParser().parseFromString(`
             <video controls class="lightbox-media modal-element" alt="Vidéo en plein écran">
                 <source src="${currentMedia.src}" type="video/mp4">
                 Votre navigateur ne prend pas en charge les vidéos.
             </video>
         `, "text/html").body.firstChild;
     } else {
-        throw Error("Le type de média n'est pas reconnu");
+        throw new Error("Le type de média n'est pas reconnu");
     }
 
-    lightboxTitleElement = new DOMParser().parseFromString(`
+    lightboxTitle = new DOMParser().parseFromString(`
         <h2 id="lightboxTitle">${currentMedia.title}</h2>
     `, "text/html").body.firstChild;
 
-    lightboxContent.appendChild(lightboxMediaElement);
-    lightboxContent.appendChild(lightboxTitleElement);
+    lightboxContent.appendChild(lightboxMedia);
+    lightboxContent.appendChild(lightboxTitle);
 
 
     const existingLeftArrow = document.querySelector(".fa-chevron-left modal-element");
