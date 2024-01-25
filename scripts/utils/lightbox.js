@@ -1,5 +1,5 @@
 import { MediaFactory } from "../factories/MediaFactory.js";
-import { currentPhotographer } from "../pages/photographer.js";
+import { getCurrentPhotographer } from "../pages/photographer.js";
 
 let currentIndex = 0;
 let filteredMedia = [];
@@ -7,7 +7,7 @@ let filteredMedia = [];
 export function updateLightboxContent() {
     const currentMedia = new MediaFactory({
         ...filteredMedia[currentIndex],
-        photographer: currentPhotographer.name
+        photographer: getCurrentPhotographer().name
     });
 
     displayLightbox(currentMedia, filteredMedia);

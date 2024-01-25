@@ -5,7 +5,16 @@ import { PhotographerTemplate } from "../templates/PhotographerTemplate.js";
 import { displayPhotographerGallery } from "../utils/displayPhotographerGallery.js";
 import { closeLightbox } from "../utils/lightbox.js";
 
-export let currentPhotographer = null; // Variable globale pour stocker le photographe courant
+let currentPhotographer = null; // Variable globale pour stocker le photographe courant
+
+
+export function serCurrentPhotographer(photographer) {
+    currentPhotographer = photographer;
+}
+
+export function getCurrentPhotographer() {
+    return currentPhotographer;
+}
 
 async function getPhotographerById(id) {
     const photographers = await new PhotographerApi("/data/photographers.json").getPhotographersApi();
@@ -45,6 +54,7 @@ async function displayData(currentPhotographer, photographerMedia) {
 
 async function init() {
     const urlParams = new URLSearchParams(window.location.search);
+
     const photographerId = parseInt(urlParams.get('id'));
     const { currentPhotographer, photographerMedia } = await getPhotographerById(photographerId);
     displayData(currentPhotographer, photographerMedia);

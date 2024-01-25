@@ -1,5 +1,5 @@
 import { sortByPopularity, sortByDate, sortByTitle } from "../utils/filters.js";
-import { currentPhotographer } from "../pages/photographer.js";
+import { getCurrentPhotographer } from "../pages/photographer.js";
 import { displayPhotographerGallery } from '../utils/displayPhotographerGallery.js';
 
 export class PhotographerTemplate {
@@ -50,16 +50,16 @@ export class PhotographerTemplate {
         select.addEventListener("change", function () {
             switch (this.value) {
                 case "popularity":
-                    displayPhotographerGallery(currentPhotographer, sortByPopularity(photographerMedia));
+                    displayPhotographerGallery(getCurrentPhotographer, sortByPopularity(photographerMedia));
                     break;
                 case "date":
-                    displayPhotographerGallery(currentPhotographer, sortByDate(photographerMedia));
+                    displayPhotographerGallery(getCurrentPhotographer, sortByDate(photographerMedia));
                     break;
                 case "title":
-                    displayPhotographerGallery(currentPhotographer, sortByTitle(photographerMedia));
+                    displayPhotographerGallery(getCurrentPhotographer, sortByTitle(photographerMedia));
                     break;
             }
         });
-        displayPhotographerGallery(currentPhotographer, sortByPopularity(photographerMedia));
+        displayPhotographerGallery(getCurrentPhotographer, sortByPopularity(photographerMedia));
     }
 }
