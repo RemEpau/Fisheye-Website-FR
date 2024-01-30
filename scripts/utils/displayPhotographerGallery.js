@@ -1,5 +1,4 @@
 import { MediaFactory } from "../factories/MediaFactory.js";
-import { getCurrentPhotographer } from "../pages/photographer.js";
 import { createMediaElement } from "../utils/filters.js";
 import { displayLightbox } from "./lightbox.js";
 
