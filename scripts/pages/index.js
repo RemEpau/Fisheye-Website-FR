@@ -2,7 +2,7 @@ import { PhotographerApi } from "../api/Api.js";
 import { PhotographerTemplate } from "../templates/PhotographerTemplate.js";
 import { Photographer } from "../models/Photographer.js";
 
-const data = "/data/photographers.json";
+const data = "./data/photographers.json";
 let tabIndexCounter = 2;
 
 async function getPhotographers() {
