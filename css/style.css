@@ -127,14 +127,15 @@ i {
   width: 170px;
   height: 70px;
   border: none;
-  background-color: #901c1c;
+  background-color: #901C1C;
   border-radius: 5px;
   cursor: pointer;
   justify-self: center;
   align-self: center;
+  transition: background-color 250ms;
 }
-.contact_button:hover {
-  background-color: #db8876;
+.contact_button:hover, .contact_button:focus-visible {
+  background-color: #dc7b66;
   color: black;
 }
 
@@ -159,7 +160,7 @@ i {
   width: 160px;
   height: 60px;
   border-radius: 5px;
-  background-color: #901c1c;
+  background-color: #901C1C;
   color: #fff;
   font-size: 18px;
   font-weight: 700;
@@ -181,7 +182,7 @@ i {
 .gallery article {
   transition: transform 0.2s ease;
 }
-.gallery article:hover {
+.gallery article:hover, .gallery article:focus {
   transform: scale(1.05);
 }
 .gallery article figure a {
@@ -199,7 +200,7 @@ i {
   justify-content: space-between;
   padding: 10px 0px;
   border-radius: 0 0 5px 5px;
-  color: #901c1c;
+  color: #901C1C;
   max-width: 400px;
 }
 .gallery article figcaption h4 {
@@ -220,12 +221,40 @@ i {
   cursor: pointer;
   font-size: 24px;
   font-weight: 400;
-  color: #901c1c;
+  color: #901C1C;
 }
 .gallery article figcaption div span {
   font-size: 24px;
   font-weight: 400;
-  color: #901c1c;
+  color: #901C1C;
+}
+
+#like_counter {
+  place-items: center;
+  position: fixed;
+  z-index: 1;
+  right: 4em;
+  bottom: 0;
+  padding: 0.75em 3em;
+  border-radius: 5px 5px 0 0;
+  overflow: auto;
+  background-color: #dc7b66;
+}
+#like_counter ul {
+  gap: 2em;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#like_counter__number {
+  font-size: 24px;
+  font-weight: medium;
+}
+#like_counter__price {
+  font-size: 24px;
+  font-weight: medium;
 }
 
 #contact_modal {
@@ -242,7 +271,7 @@ i {
 }
 
 .modal {
-  background: #db8876;
+  background: #dc7b66;
   border-radius: 5px;
   padding: 2em;
   align-items: center;
@@ -315,7 +344,7 @@ i {
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.95);
+  background: #fff;
 }
 #lightbox_modal .lightbox {
   display: flex;
@@ -357,7 +386,7 @@ i {
   font-size: 32px;
   font-weight: normal;
   text-align: left;
-  color: #901c1c;
+  color: #901C1C;
 }
 #lightbox_modal .arrow {
   position: absolute;
@@ -369,7 +398,7 @@ i {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  color: #901c1c;
+  color: #901C1C;
 }
 #lightbox_modal .fa-chevron-left {
   left: 1em;
@@ -420,6 +449,10 @@ h1 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  transition: transform 250ms;
+}
+.photographer_section article:hover {
+  transform: scale(1.05);
 }
 .photographer_section article a {
   margin-top: 1em;

@@ -1,3 +1,6 @@
+$col-primary: #901C1C;
+$col-secondary: #D3573C;
+
 #contact_modal,
 #lightbox_modal {
     display: none;
@@ -12,13 +15,13 @@
 
     &__name {
         margin: 0;
-        color: #D3573C;
+        color: $col-secondary;
         font-weight: 400;
         font-size: 3em;
     }
 
     &__address {
-        color: #901C1C;
+        color: $col-primary;
         font-weight: 400;
         font-size: 1.75em;
     }
@@ -93,14 +96,16 @@
     width: 170px;
     height: 70px;
     border: none;
-    background-color: #901c1c;
+    background-color: $col-primary;
     border-radius: 5px;
     cursor: pointer;
     justify-self: center;
     align-self: center;
+    transition: background-color 250ms;
 
-    &:hover {
-        background-color: #db8876;
+    &:hover,
+    &:focus-visible {
+        background-color: lighten($col-secondary, 10);
         color: black;
     }
 }
@@ -129,7 +134,7 @@
         width: 160px;
         height: 60px;
         border-radius: 5px;
-        background-color: #901c1c;
+        background-color: $col-primary;
         color: #fff;
         font-size: 18px;
         font-weight: 700;
@@ -154,7 +159,8 @@
     article {
         transition: transform 0.2s ease;
 
-        &:hover {
+        &:hover,
+        &:focus {
             transform: scale(1.05);
         }
 
@@ -178,7 +184,7 @@
             justify-content: space-between;
             padding: 10px 0px;
             border-radius: 0 0 5px 5px;
-            color: #901c1c;
+            color: $col-primary;
             max-width: 400px;
 
             h4 {
@@ -200,18 +206,53 @@
                     cursor: pointer;
                     font-size: 24px;
                     font-weight: 400;
-                    color: #901c1c;
+                    color: $col-primary;
                 }
 
                 span {
                     font-size: 24px;
                     font-weight: 400;
-                    color: #901c1c;
+                    color: $col-primary;
                 }
             }
         }
     }
 }
+
+// --- Like Counter --- //
+
+#like_counter {
+    place-items: center;
+    position: fixed;
+    z-index: 1;
+    right: 4em;
+    bottom: 0;
+    padding: 0.75em 3em;
+    border-radius: 5px 5px 0 0;
+    overflow: auto;
+    background-color: lighten($col-secondary, 10);
+
+    ul {
+        gap: 2em;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+
+    }
+
+    &__number {
+        font-size: 24px;
+        font-weight: medium;
+    }
+
+    &__price {
+        font-size: 24px;
+        font-weight: medium;
+    }
+}
+
 
 //--- Modal Contact ---//
 
@@ -229,7 +270,7 @@
 }
 
 .modal {
-    background: #db8876;
+    background: lighten($col-secondary, 10);
     border-radius: 5px;
     padding: 2em;
     align-items: center;
@@ -315,7 +356,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.95);
+    background: #fff;
 
     .lightbox {
         display: flex;
@@ -338,7 +379,7 @@
                 background-color: transparent;
                 font-size: 42px;
                 font-weight: 700;
-                color: #901C1C;
+                color: $col-primary;
                 cursor: pointer;
             }
         }
@@ -361,7 +402,7 @@
                 font-size: 32px;
                 font-weight: normal;
                 text-align: left;
-                color: #901c1c;
+                color: $col-primary;
             }
         }
     }
@@ -376,7 +417,7 @@
         background-color: transparent;
         border: none;
         cursor: pointer;
-        color: #901c1c;
+        color: $col-primary;
     }
 
     .fa-chevron-left {

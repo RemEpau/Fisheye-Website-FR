@@ -1,4 +1,5 @@
 import { MediaFactory } from "../factories/MediaFactory.js";
+import { getCurrentPhotographer } from "../pages/photographer.js";
 import { createMediaElement } from "../utils/filters.js";
 import { displayLightbox } from "./lightbox.js";
 
@@ -42,9 +43,6 @@ export function displayPhotographerGallery(photographer, photographerMedia) {
                 </article>
             `, "text/html").body.firstChild;
 
-            //TODO : Afficher le lightbox quand on clique sur l'image
-
-
             const likeBtn = mediaContainer.querySelector("#likeBtn");
             const heartIcon = mediaContainer.querySelector(".fa-heart");
             const likeNbr = mediaContainer.querySelector("#likeNbr");
@@ -56,12 +54,14 @@ export function displayPhotographerGallery(photographer, photographerMedia) {
                 if (isLiked) {
                     likeNbr.textContent = currentLikes - 1;
                     heartIcon.classList.replace("fa-solid", "fa-regular");
+                    totalLikes -= 1;
                 } else {
                     likeNbr.textContent = currentLikes + 1;
                     heartIcon.classList.replace("fa-regular", "fa-solid");
+                    totalLikes += 1;
                 }
 
-                totalLikes = isLiked ? totalLikes - 1 : totalLikes + 1;
+                document.querySelector("#like_counter__number span").textContent = totalLikes;
             });
 
             const mediaLink = mediaContainer.querySelector(".media-container");
@@ -70,9 +70,11 @@ export function displayPhotographerGallery(photographer, photographerMedia) {
                 displayLightbox(media, photographerMediaFiltered);
             });
 
-            // Add elements to DOM
-
             totalLikes += media.likes;
+            document.querySelector("#like_counter__number span").textContent = totalLikes;
+            document.querySelector("#like_counter__number").setAttribute("aria-label", `Nombre d'intéractions: ${totalLikes}`);
+            document.querySelector("#like_counter__price").textContent = `${photographer.price}€ / jour`;
+            document.querySelector("#like_counter__price").setAttribute("aria-label", `Prix par jour: ${photographer.price}€`);
             gallery.appendChild(mediaContainer);
         });
     }

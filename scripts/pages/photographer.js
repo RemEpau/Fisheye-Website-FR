@@ -5,6 +5,7 @@ import { PhotographerTemplate } from "../templates/PhotographerTemplate.js";
 import { displayPhotographerGallery } from "../utils/displayPhotographerGallery.js";
 import { closeLightbox } from "../utils/lightbox.js";
 import { sortByPopularity, sortByDate, sortByTitle } from "../utils/filters.js";
+import { totalLikes } from "../utils/totalLikes.js";
 
 let currentPhotographer = null; // Variable globale pour stocker le photographe courant
 
@@ -73,6 +74,8 @@ async function displayData(currentPhotographer, photographerMedia) {
 
     // On affiche le nom du photographe dans le modal
     document.querySelector('#modalTitle').innerHTML += `</br> ${photographerData._name}`
+
+    // On affiche le nombre de likes et le prix du photographe
 }
 
 async function init() {

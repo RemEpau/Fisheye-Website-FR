@@ -1,5 +1,3 @@
-
-
 export class PhotographerTemplate {
     constructor(photographer, tabIndexCounter) {
         this._photographer = photographer
