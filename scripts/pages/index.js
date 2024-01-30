@@ -1,6 +1,6 @@
-import { PhotographerApi } from "../api/Api.js";
-import { PhotographerTemplate } from "../templates/PhotographerTemplate.js";
-import { Photographer } from "../models/Photographer.js";
+import { PhotographerApi } from "../api/Api";
+import { PhotographerTemplate } from "../templates/PhotographerTemplate";
+import { Photographer } from "../models/Photographer";
 
 const data = "./data/photographers.json";
 let tabIndexCounter = 2;
