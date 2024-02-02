@@ -1,7 +1,7 @@
 import { PhotographerApi } from "../api/Api.js";
 import { Photographer } from "../models/Photographer.js";
 import { displayModal, closeModal } from "../utils/contactForm.js";
-import { PhotographerTemplate } from "../templates/PhotographerTemplate.js";
+import { PhotographerTemplate } from "../templates/photographerTemplate.js";
 import { displayPhotographerGallery } from "../utils/displayPhotographerGallery.js";
 import { closeLightbox } from "../utils/lightbox.js";
 import { sortByPopularity, sortByDate, sortByTitle } from "../utils/filters.js";
