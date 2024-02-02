@@ -39,12 +39,12 @@ export function displayFilters(photographerMedia) {
 }
 
 async function getPhotographerMediaById(id) {
-    const media = await new PhotographerApi("/data/photographers.json").getMediasApi();
+    const media = await new PhotographerApi("./data/photographers.json").getMediasApi();
     return media.filter((media) => media.photographerId == id);
 }
 
 async function getPhotographerById(id) {
-    const photographers = await new PhotographerApi("/data/photographers.json").getPhotographersApi();
+    const photographers = await new PhotographerApi("./data/photographers.json").getPhotographersApi();
     return photographers.find((photographer) => photographer.id == id);
 }
 
