@@ -5,7 +5,6 @@ import { PhotographerTemplate } from "../templates/PhotographerTemplate.js";
 import { displayPhotographerGallery } from "../utils/displayPhotographerGallery.js";
 import { closeLightbox } from "../utils/lightbox.js";
 import { sortByPopularity, sortByDate, sortByTitle } from "../utils/filters.js";
-import { totalLikes } from "../utils/totalLikes.js";
 
 let currentPhotographer = null; // Variable globale pour stocker le photographe courant
 
