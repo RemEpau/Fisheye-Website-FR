@@ -2,13 +2,10 @@ import { PhotographerApi } from "../api/Api.js";
 import { PhotographerTemplate } from "../templates/photographerTemplate.js";
 import { Photographer } from "../models/Photographer.js";
 
-const data = "./data/photographers.json";
 let tabIndexCounter = 2;
 
 async function getPhotographers() {
-    const response = new PhotographerApi(data);
-    const photographers = await response.getPhotographersApi();
-    return photographers;
+    return await new PhotographerApi("./data/photographers.json").getPhotographersApi();
 }
 
 async function displayData(photographers) {
