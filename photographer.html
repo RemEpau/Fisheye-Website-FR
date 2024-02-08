@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <title>Photographers</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap">
   <script src="https://kit.fontawesome.com/c9f8ad8d51.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./css/style.css">
   <link rel="icon" type="image/png" href="./assets/favicon.png">
-  <script src="./scripts/pages/photographer.js" type="module" defer></script>
+  <script src="./scripts/pages/photographer.js" type="module"></script>
 </head>
 
 <body>
@@ -29,8 +29,7 @@
       <form class="filter">
         <label for="sort">Trier par :</label>
         <div class="dropdown" role="listbox" aria-haspopup="listbox" aria-expanded="false">
-          <select id="sort" name="sort" class="dropbtn" aria-label="Order by" tabindex="10"
-            id="submitContactModalFormBtn">
+          <select id="sort" name="sort" class="dropbtn" aria-label="Order by" tabindex="10">
             <option id="opt-popularity" value="popularity">Popularité</option>
             <option id="opt-date" value="date">Date</option>
             <option id="opt-title" value="title">Titre</option>
@@ -48,7 +47,7 @@
     <ul>
       <li id="like_counter__number">
         <span></span>
-        <i class="fa-solid fa-heart" aria-label="likes"></i>
+        <i class="fa-solid fa-heart"></i>
       </li>
       <li id="like_counter__price"></li>
     </ul>
