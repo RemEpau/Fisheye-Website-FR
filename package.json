@@ -1,14 +1,14 @@
 {
-  "name": "fisheye-website-fr",
-  "version": "1.0.0",
-  "description": "Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "eslint": "^8.56.0"
-  }
+    "name": "fisheye-website-fr",
+    "version": "1.0.0",
+    "description": "FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Rémi Epaulais",
+    "license": "ISC",
+    "devDependencies": {
+        "eslint": "^8.56.0"
+    }
 }
