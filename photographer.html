@@ -2,26 +2,26 @@
 <html lang="fr">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap">
   <script src="https://kit.fontawesome.com/c9f8ad8d51.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./css/style.css" />
-  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" type="image/png" href="./assets/favicon.png">
   <script src="./scripts/pages/photographer.js" type="module" defer></script>
 </head>
 
 <body>
   <header>
     <a href="." class="logo" title="Fisheye Home page" tabindex="1">
-      <img src="./assets/images/logo.png" class="logo__img" alt="fisheye logo" />
+      <img src="./assets/images/logo.png" class="logo__img" alt="fisheye logo">
     </a>
   </header>
   <main id="main">
     <div class="photograph-header">
       <div class="photograph-info"></div>
-      <button class="contact_button" alt="Contact Me" tabindex="2">
+      <button class="contact_button" tabindex="2" aria-label="Contact Me">
         Contactez-moi
       </button>
     </div>
@@ -29,7 +29,8 @@
       <form class="filter">
         <label for="sort">Trier par :</label>
         <div class="dropdown" role="listbox" aria-haspopup="listbox" aria-expanded="false">
-          <select id="sort" name="sort" class="dropbtn" alt="Order by" tabindex="10" id="submitContactModalFormBtn">
+          <select id="sort" name="sort" class="dropbtn" aria-label="Order by" tabindex="10"
+            id="submitContactModalFormBtn">
             <option id="opt-popularity" value="popularity">Popularité</option>
             <option id="opt-date" value="date">Date</option>
             <option id="opt-title" value="title">Titre</option>
@@ -47,7 +48,7 @@
     <ul>
       <li id="like_counter__number">
         <span></span>
-        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart" aria-label="likes"></i>
       </li>
       <li id="like_counter__price"></li>
     </ul>
@@ -62,11 +63,11 @@
       <form id="contact_form">
         <div>
           <label for="prenom">Prénom</label>
-          <input tabindex="4" type="text" name="prenom" id="prenom" autocomplete="given-name" class="modal-element" />
+          <input tabindex="4" type="text" name="prenom" id="prenom" autocomplete="given-name" class="modal-element">
           <label for="nom">Nom</label>
-          <input tabindex="5" type="text" name="nom" id="nom" autocomplete="family-name" class="modal-element" />
+          <input tabindex="5" type="text" name="nom" id="nom" autocomplete="family-name" class="modal-element">
           <label for="email">Email</label>
-          <input tabindex="6" type="email" name="email" id="email" autocomplete="email" class="modal-element" />
+          <input tabindex="6" type="email" name="email" id="email" autocomplete="email" class="modal-element">
           <label for="message">Votre message</label>
           <textarea tabindex="7" name="message" id="message" rows="5" autocomplete="off"
             class="modal-element"></textarea>
@@ -78,7 +79,7 @@
   <div id="lightbox_modal">
     <div class="lightbox" aria-hidden="true" role="dialog" aria-describedby="lightboxTitle">
       <header>
-        <button alt="Icone de fermeture de la lightbox" class="lightbox_close fa-solid fa-xmark modal-element" />
+        <button alt="Icone de fermeture de la lightbox" class="lightbox_close fa-solid fa-xmark modal-element"></button>
       </header>
       <div id="lightboxContent"></div>
     </div>
