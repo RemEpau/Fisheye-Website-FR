@@ -21,6 +21,7 @@ export function displayPhotographerGallery(photographer, photographerMedia) {
                 ...mediaData,
                 photographer: photographer.name,
             });
+            console.log(media.type);
             const mediaElement = createMediaElement(media);
 
             const mediaContainer = new DOMParser().parseFromString(`

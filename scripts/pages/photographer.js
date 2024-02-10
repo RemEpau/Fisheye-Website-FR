@@ -58,18 +58,12 @@ async function displayData(currentPhotographer, photographerMedia) {
     // On récupère le DOM de la photo et des infos du photographe
     const userCardDOM = photographModel.getCurrentUserImgDOM();
     const userInfoDOM = photographModel.getCurrentUserInfoDOM();
-    console.log(userInfoDOM);
+
     photographersSection.appendChild(userCardDOM);
     photographersInfo.appendChild(userInfoDOM);
 
     // On récupère les éléments filtrés du photographe
     displayFilters(photographerMedia);
-
-    // On affiche la gallery du photographe
-    displayPhotographerGallery(
-        currentPhotographer,
-        photographerMedia
-    );
 
     // On affiche le nom du photographe dans le modal
     document.querySelector('#modalTitle').innerHTML += `</br> ${photographerData._name}`
