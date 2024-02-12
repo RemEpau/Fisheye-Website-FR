@@ -1,8 +1,13 @@
 import { MediaFactory } from "../factories/MediaFactory.js";
 import { getCurrentPhotographer } from "../pages/photographer.js";
+import { arrowListener, escapeListener } from "../utils/keyboardListeners.js";
 
 let currentIndex = 0;
 let filteredMedia = [];
+let listeners = {
+    arrow: false,
+    escape: false
+}
 
 export function updateLightboxContent() {
     const currentMedia = new MediaFactory({
@@ -15,13 +20,11 @@ export function updateLightboxContent() {
 
 export function nextMedia() {
     currentIndex = ((currentIndex + 1) + filteredMedia.length) % filteredMedia.length;
-    console.log("Current Index : ", currentIndex);
     updateLightboxContent();
 }
 
 export function previousMedia() {
     currentIndex = ((currentIndex - 1) + filteredMedia.length) % filteredMedia.length;
-    console.log("Current Index : ", currentIndex);
     updateLightboxContent();
 }
 
@@ -75,6 +78,16 @@ export function displayLightbox(currentMedia, allMedia) {
 
         lightbox.appendChild(leftArrow);
         lightbox.appendChild(rightArrow);
+    }
+
+    if (!listeners.arrow) {
+        arrowListener(previousMedia, nextMedia)
+        listeners.arrow = true;
+    }
+
+    if (!listeners.escape) {
+        escapeListener(closeLightbox);
+        listeners.escape = true;
     }
 
     lightbox.style.display = "grid";
