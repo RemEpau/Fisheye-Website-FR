@@ -8,6 +8,7 @@ let listeners = {
     arrow: false,
     escape: false
 }
+const nonModalElements = document.querySelectorAll("body *:not(.modal-element)");
 
 export function updateLightboxContent() {
     const currentMedia = new MediaFactory({
@@ -31,7 +32,6 @@ export function previousMedia() {
 export function displayLightbox(currentMedia, allMedia) {
     const lightbox = document.querySelector("#lightbox_modal");
     const lightboxContent = document.querySelector(".lightbox #lightboxContent")
-    const nonModalElements = document.querySelectorAll("body *:not(.modal-element)");
 
     //Set le tabindex des éléments non modaux à -1
     nonModalElements.forEach(node => {
@@ -99,7 +99,6 @@ export function displayLightbox(currentMedia, allMedia) {
 
 export function closeLightbox() {
     const lightbox = document.getElementById("lightbox_modal");
-    const nonModalElements = document.querySelectorAll("body *:not(.modal-element)");
 
     nonModalElements.forEach(node => {
         if (node._prevTabIndex) {
